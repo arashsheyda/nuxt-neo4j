@@ -69,7 +69,6 @@ export default defineNuxtModule<ModuleOptions>({
     if (!config.neo4j.auth.username || !config.neo4j.auth.password)
       throw new Error('No credentials provided for Neo4j')
 
-
     nuxt.hook('nitro:config', (_config) => {
       // Inline module runtime in Nitro bundle
       _config.externals = defu(typeof _config.externals === 'object' ? _config.externals : {}, {
