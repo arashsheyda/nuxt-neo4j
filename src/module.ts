@@ -1,4 +1,5 @@
 import { addServerImportsDir, addServerPlugin, createResolver, defineNuxtModule, logger } from '@nuxt/kit'
+import { addCustomTab } from '@nuxt/devtools-kit'
 import defu from 'defu'
 
 export interface ModuleOptions {
@@ -9,7 +10,6 @@ export interface ModuleOptions {
    *
    */
   uri?: string
-
   /**
    *  Authentication details for connecting to the Neo4j database.
    *
@@ -39,6 +39,13 @@ export interface ModuleOptions {
      */
     password?: string
   }
+   /**
+   *  Nuxt Devtools support for Neo4j Workspace.
+   *
+   * @default true
+   *
+   */
+  devtools?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -53,6 +60,7 @@ export default defineNuxtModule<ModuleOptions>({
       username: process.env.NEO4J_USERNAME,
       password: process.env.NEO4J_PASSWORD,
     },
+    devtools: true,
   },
   hooks: {},
   setup(options, nuxt) {
@@ -78,6 +86,19 @@ export default defineNuxtModule<ModuleOptions>({
 
     addServerImportsDir(resolve('./runtime/server/utils'))
     addServerPlugin(resolve('./runtime/server/plugins/neo4j'))
+
+    const isDevToolsEnabled = typeof nuxt.options.devtools === 'boolean' ? nuxt.options.devtools : nuxt.options.devtools.enabled
+    if (nuxt.options.dev && isDevToolsEnabled) {
+      addCustomTab({
+        name: 'nuxt-neo4j',
+        title: 'Neo4j',
+        icon: 'i-simple-icons-neo4j',
+        view: {
+          type: 'iframe',
+          src: 'https://workspace-preview.neo4j.io/connection/connect',
+        },
+      })
+    }
 
     logger.info('Neo4j module has been initialized!')
   },

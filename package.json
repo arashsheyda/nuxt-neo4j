@@ -27,6 +27,7 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@nuxt/devtools-kit": "^1.0.8",
     "@nuxt/kit": "^3.10.3",
     "defu": "^6.1.4",
     "neo4j-driver": "^5.18.0"
