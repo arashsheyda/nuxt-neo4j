@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/arashsheyda/nuxt-neo4j/compare/v0.0.2...v0.0.3)
+
+### 🩹 Fixes
+
+- UseDrive runtimeConfig ([f86df01](https://github.com/arashsheyda/nuxt-neo4j/commit/f86df01))
+- UseDrive runtimeConfig #2 ([#2](https://github.com/arashsheyda/nuxt-neo4j/issues/2))
+
+### 🏡 Chore
+
+- Lint ([12976e6](https://github.com/arashsheyda/nuxt-neo4j/commit/12976e6))
+
+### ❤️ Contributors
+
+- Arash ([@arashsheyda](http://github.com/arashsheyda))
+
 ## v0.0.2
 
 [compare changes](https://github.com/arashsheyda/nuxt-neo4j/compare/v0.0.1...v0.0.2)
