@@ -12,7 +12,7 @@ export function useDriver() {
   const config = useRuntimeConfig().neo4j
   if (!_driver) {
     try {
-      _driver = neo4j.driver(config.uri, neo4j.auth[config.auth.type](config.auth.username, config.auth.password))
+      _driver = neo4j.driver(config.uri, neo4j.auth.basic(config.auth.username, config.auth.password))
       consola.success(`Neo4j driver has been ${colors.green('connected.')}`)
     }
     catch (error) {
