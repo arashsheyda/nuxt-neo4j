@@ -16,6 +16,7 @@ Effortlessly integrate Neo4j's powerful graph database into your Nuxt applicatio
 ## Features
 
 - **Effortless Integration**: Set up a database with just one line of configuration.
+- **DevTools Support**: you will be able to access neo4j's workspace from Nuxt DevTools!
 - **Easy to Use**: The module provides a `useDriver` function for easy interaction with the database.
 - **Developer Experience**: this module is using the official `neo4j-driver` so it has full support of typescript.
 
