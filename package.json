@@ -1,7 +1,7 @@
 {
   "name": "nuxt-neo4j",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Effortlessly integrate Neo4j's powerful graph database into your Nuxt applications!",
   "license": "MIT",
   "repository": "arashsheyda/nuxt-neo4j",
