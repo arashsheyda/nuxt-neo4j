@@ -13,10 +13,26 @@ export function useDriver() {
   if (!_driver) {
     try {
       _driver = neo4j.driver(config.uri, neo4j.auth.basic(config.auth.username, config.auth.password))
-      consola.success(`Neo4j driver has been ${colors.green('connected.')}`)
+      if (process.dev) {
+        (async () => {
+          try {
+            const info = await _driver.getServerInfo()
+            consola.box({
+              title: colors.bold(colors.green(' Neo4j connection successful. ')),
+              message: JSON.stringify(info, null, 2),
+            })
+          }
+          catch (error) {
+            consola.error('Failed to get server info:', error)
+          }
+        })()
+      }
+      else {
+        consola.success(`Neo4j connection ${colors.green('successful.')}`)
+      }
     }
     catch (error) {
-      consola.error('Failed to create driver:', error)
+      consola.error('Failed to create Neo4j driver:', error)
     }
   }
   return _driver
