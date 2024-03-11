@@ -7,7 +7,7 @@
 [![License][license-src]][license-href]
 [![Nuxt][nuxt-src]][nuxt-href]
 
-Effortlessly integrate Neo4j's powerful graph database into your Nuxt applications!
+Effortlessly integrate [Neo4j](https://github.com/neo4j/neo4j) powerful graph database into your [Nuxt](https://github.com/nuxt/nuxt) applications!
 
 - [✨ &nbsp;Release Notes](/CHANGELOG.md)
 <!-- - [🏀 Online playground](https://stackblitz.com/github/your-org/nuxt-neo4j?file=playground%2Fapp.vue) -->
