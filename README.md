@@ -25,14 +25,7 @@ Effortlessly integrate [Neo4j](https://github.com/neo4j/neo4j) powerful graph da
 1. Add `nuxt-neo4j` dependency to your project
 
 ```bash
-# Using pnpm
-pnpm add -D nuxt-neo4j
-
-# Using yarn
-yarn add --dev nuxt-neo4j
-
-# Using npm
-npm install --save-dev nuxt-neo4j
+npx nuxi@latest module add neo4j
 ```
 
 2. Add `nuxt-neo4j` to the `modules` section of `nuxt.config.ts`
