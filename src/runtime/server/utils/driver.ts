@@ -12,7 +12,21 @@ export function useDriver() {
   const config = useRuntimeConfig().neo4j
   if (!_driver) {
     try {
-      _driver = neo4j.driver(config.uri, neo4j.auth.basic(config.auth.username, config.auth.password))
+
+      let auth
+
+      if (config.auth.type === 'basic') {
+        auth = neo4j.auth.basic(config.auth.username, config.auth.password, config.auth.realm)
+      } else if (config.auth.type === 'kerberos') {
+        auth = neo4j.auth.kerberos(config.auth.ticket)
+      } else if (config.auth.type === 'bearer') {
+        auth = neo4j.auth.bearer(config.auth.token)
+      } else if (config.auth.type === 'custom') {
+        auth = neo4j.auth.custom(config.auth.principal, config.auth.credentials, config.auth.realm, config.auth.scheme)
+      }
+
+      _driver = neo4j.driver(config.uri, auth)
+
       if (process.dev) {
         (async () => {
           try {
