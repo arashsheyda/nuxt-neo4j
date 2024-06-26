@@ -4,26 +4,22 @@ import neo4j from 'neo4j-driver'
 import { consola } from 'consola'
 import { colors } from 'consola/utils'
 
-import { useRuntimeConfig } from '#imports'
-
 let _driver: Driver
 
 export function useDriver() {
   const config = useRuntimeConfig().neo4j
   if (!_driver) {
     try {
-
       let auth
 
-      if (config.auth.type === 'basic') {
+      if (config.auth.type === 'basic')
         auth = neo4j.auth.basic(config.auth.username, config.auth.password, config.auth.realm)
-      } else if (config.auth.type === 'kerberos') {
+      else if (config.auth.type === 'kerberos')
         auth = neo4j.auth.kerberos(config.auth.ticket)
-      } else if (config.auth.type === 'bearer') {
+      else if (config.auth.type === 'bearer')
         auth = neo4j.auth.bearer(config.auth.token)
-      } else if (config.auth.type === 'custom') {
+      else if (config.auth.type === 'custom')
         auth = neo4j.auth.custom(config.auth.principal, config.auth.credentials, config.auth.realm, config.auth.scheme)
-      }
 
       _driver = neo4j.driver(config.uri, auth)
 
